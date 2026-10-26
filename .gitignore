@@ -1,0 +1,16 @@
+node_modules/
+artifacts/
+coverage/
+*.tgz
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+.npmrc
+*.pem
+*.key
+__pycache__/
+
+# Local video production workspace; reviewed README assets live in docs/images/.
+/promo/

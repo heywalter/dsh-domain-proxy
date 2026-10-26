@@ -1,0 +1,74 @@
+{
+  "name": "dsh-domain-proxy",
+  "version": "0.1.1",
+  "description": "Route selected DSH API domains through a local HTTP proxy; keep other routes unchanged.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./client/client.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-domain-proxy": "bin/cli.js"
+  },
+  "files": [
+    "src",
+    "client",
+    "bin",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "docs",
+    "SECURITY.md",
+    "CHANGELOG.md"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": "0.2.1-rc.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/index.js && node --check client/client.js",
+    "test:dsh": "node scripts/test-dsh.mjs",
+    "pack:check": "npm pack --dry-run --json",
+    "pack:local": "node scripts/pack.mjs"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "3.18.5",
+    "undici": "7.30.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heywalter/dsh-domain-proxy.git"
+  },
+  "homepage": "https://www.npmjs.com/package/dsh-domain-proxy",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "proxy",
+    "domain-routing",
+    "observability"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "tag": "latest"
+  }
+}

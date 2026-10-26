@@ -1,0 +1,3 @@
+- insert:
+    - id: domain-proxy
+      name: dsh-domain-proxy

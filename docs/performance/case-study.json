@@ -1,0 +1,445 @@
+{
+  "title": "Historical routing setup case study",
+  "date": "2026-10-24",
+  "app": "DSH 0.2.1-rc.3",
+  "provider": "open-design",
+  "model": "deepseek-v4.1-flash",
+  "implementation": "Earlier local routing prototype; not an 0.1.0 benchmark",
+  "design": "Observational before/after; not randomized or contemporaneous A/B",
+  "selection": "Only assistant messages with reported output usage; failed/incomplete attempts are not independent rows",
+  "groups": [
+    {
+      "kind": "historical",
+      "requests": [
+        {
+          "output_tokens": 259,
+          "stream_seconds": 4.232,
+          "stream_tps": 61.2,
+          "ttft_seconds": 4.717,
+          "uncached_input_tokens": 250,
+          "cache_read_tokens": 166528
+        },
+        {
+          "output_tokens": 377,
+          "stream_seconds": 4.48,
+          "stream_tps": 84.15,
+          "ttft_seconds": 15.587,
+          "uncached_input_tokens": 268,
+          "cache_read_tokens": 166912
+        },
+        {
+          "output_tokens": 296,
+          "stream_seconds": 8.15,
+          "stream_tps": 36.32,
+          "ttft_seconds": 9.791,
+          "uncached_input_tokens": 182,
+          "cache_read_tokens": 167552
+        },
+        {
+          "output_tokens": 278,
+          "stream_seconds": 6.027,
+          "stream_tps": 46.13,
+          "ttft_seconds": 14.575,
+          "uncached_input_tokens": 288,
+          "cache_read_tokens": 167936
+        },
+        {
+          "output_tokens": 385,
+          "stream_seconds": 47.636,
+          "stream_tps": 8.08,
+          "ttft_seconds": 4.975,
+          "uncached_input_tokens": 324,
+          "cache_read_tokens": 168704
+        },
+        {
+          "output_tokens": 174,
+          "stream_seconds": 38.812,
+          "stream_tps": 4.48,
+          "ttft_seconds": 27.123,
+          "uncached_input_tokens": 287,
+          "cache_read_tokens": 169344
+        },
+        {
+          "output_tokens": 374,
+          "stream_seconds": 47.635,
+          "stream_tps": 7.85,
+          "ttft_seconds": 18.378,
+          "uncached_input_tokens": 449,
+          "cache_read_tokens": 169728
+        },
+        {
+          "output_tokens": 190,
+          "stream_seconds": 2.133,
+          "stream_tps": 89.08,
+          "ttft_seconds": 9.077,
+          "uncached_input_tokens": 411,
+          "cache_read_tokens": 170496
+        },
+        {
+          "output_tokens": 578,
+          "stream_seconds": 18.255,
+          "stream_tps": 31.66,
+          "ttft_seconds": 550.261,
+          "uncached_input_tokens": 240,
+          "cache_read_tokens": 170880
+        },
+        {
+          "output_tokens": 687,
+          "stream_seconds": 324.687,
+          "stream_tps": 2.12,
+          "ttft_seconds": 6.77,
+          "uncached_input_tokens": 470,
+          "cache_read_tokens": 171648
+        },
+        {
+          "output_tokens": 656,
+          "stream_seconds": 3.977,
+          "stream_tps": 164.95,
+          "ttft_seconds": 18.75,
+          "uncached_input_tokens": 250,
+          "cache_read_tokens": 172672
+        },
+        {
+          "output_tokens": 205,
+          "stream_seconds": 1.837,
+          "stream_tps": 111.59,
+          "ttft_seconds": 11.425,
+          "uncached_input_tokens": 296,
+          "cache_read_tokens": 173568
+        },
+        {
+          "output_tokens": 190,
+          "stream_seconds": 25.06,
+          "stream_tps": 7.58,
+          "ttft_seconds": 8.941,
+          "uncached_input_tokens": 294,
+          "cache_read_tokens": 173952
+        },
+        {
+          "output_tokens": 211,
+          "stream_seconds": 1.755,
+          "stream_tps": 120.23,
+          "ttft_seconds": 12.856,
+          "uncached_input_tokens": 173,
+          "cache_read_tokens": 174336
+        },
+        {
+          "output_tokens": 326,
+          "stream_seconds": 6.339,
+          "stream_tps": 51.43,
+          "ttft_seconds": 7.989,
+          "uncached_input_tokens": 197,
+          "cache_read_tokens": 174592
+        },
+        {
+          "output_tokens": 902,
+          "stream_seconds": 21.665,
+          "stream_tps": 41.63,
+          "ttft_seconds": 33.894,
+          "uncached_input_tokens": 203,
+          "cache_read_tokens": 175104
+        },
+        {
+          "output_tokens": 199,
+          "stream_seconds": 1.781,
+          "stream_tps": 111.73,
+          "ttft_seconds": 6.168,
+          "uncached_input_tokens": 177,
+          "cache_read_tokens": 176128
+        },
+        {
+          "output_tokens": 180,
+          "stream_seconds": 3.784,
+          "stream_tps": 47.57,
+          "ttft_seconds": 5.891,
+          "uncached_input_tokens": 471,
+          "cache_read_tokens": 176384
+        },
+        {
+          "output_tokens": 590,
+          "stream_seconds": 7.206,
+          "stream_tps": 81.88,
+          "ttft_seconds": 9.482,
+          "uncached_input_tokens": 283,
+          "cache_read_tokens": 177024
+        },
+        {
+          "output_tokens": 228,
+          "stream_seconds": 3.866,
+          "stream_tps": 58.98,
+          "ttft_seconds": 27.418,
+          "uncached_input_tokens": 431,
+          "cache_read_tokens": 177792
+        },
+        {
+          "output_tokens": 722,
+          "stream_seconds": 14.279,
+          "stream_tps": 50.56,
+          "ttft_seconds": 16.122,
+          "uncached_input_tokens": 204,
+          "cache_read_tokens": 178304
+        },
+        {
+          "output_tokens": 65,
+          "stream_seconds": 2.16,
+          "stream_tps": 30.09,
+          "ttft_seconds": 5.508,
+          "uncached_input_tokens": 153,
+          "cache_read_tokens": 179200
+        },
+        {
+          "output_tokens": 57,
+          "stream_seconds": 1.073,
+          "stream_tps": 53.12,
+          "ttft_seconds": 12.96,
+          "uncached_input_tokens": 241,
+          "cache_read_tokens": 179200
+        },
+        {
+          "output_tokens": 196,
+          "stream_seconds": 185.091,
+          "stream_tps": 1.06,
+          "ttft_seconds": 22.957,
+          "uncached_input_tokens": 1014,
+          "cache_read_tokens": 179456
+        },
+        {
+          "output_tokens": 380,
+          "stream_seconds": 10.842,
+          "stream_tps": 35.05,
+          "ttft_seconds": 5.241,
+          "uncached_input_tokens": 158,
+          "cache_read_tokens": 180608
+        },
+        {
+          "output_tokens": 939,
+          "stream_seconds": 23.107,
+          "stream_tps": 40.64,
+          "ttft_seconds": 27.694,
+          "uncached_input_tokens": 444,
+          "cache_read_tokens": 181120
+        },
+        {
+          "output_tokens": 327,
+          "stream_seconds": 31.943,
+          "stream_tps": 10.24,
+          "ttft_seconds": 5.564,
+          "uncached_input_tokens": 246,
+          "cache_read_tokens": 182272
+        },
+        {
+          "output_tokens": 678,
+          "stream_seconds": 23.648,
+          "stream_tps": 28.67,
+          "ttft_seconds": 2062.11,
+          "uncached_input_tokens": 187,
+          "cache_read_tokens": 182912
+        }
+      ]
+    },
+    {
+      "kind": "current_text",
+      "requests": [
+        {
+          "output_tokens": 723,
+          "stream_seconds": 6.031,
+          "stream_tps": 119.88,
+          "ttft_seconds": 1.973,
+          "uncached_input_tokens": 202,
+          "cache_read_tokens": 15488
+        },
+        {
+          "output_tokens": 667,
+          "stream_seconds": 5.31,
+          "stream_tps": 125.61,
+          "ttft_seconds": 1.792,
+          "uncached_input_tokens": 226,
+          "cache_read_tokens": 16256
+        },
+        {
+          "output_tokens": 605,
+          "stream_seconds": 4.743,
+          "stream_tps": 127.56,
+          "ttft_seconds": 2.06,
+          "uncached_input_tokens": 200,
+          "cache_read_tokens": 17024
+        },
+        {
+          "output_tokens": 661,
+          "stream_seconds": 5.551,
+          "stream_tps": 119.08,
+          "ttft_seconds": 3.351,
+          "uncached_input_tokens": 243,
+          "cache_read_tokens": 17664
+        },
+        {
+          "output_tokens": 698,
+          "stream_seconds": 5.913,
+          "stream_tps": 118.04,
+          "ttft_seconds": 1.628,
+          "uncached_input_tokens": 211,
+          "cache_read_tokens": 18432
+        },
+        {
+          "output_tokens": 761,
+          "stream_seconds": 6.24,
+          "stream_tps": 121.96,
+          "ttft_seconds": 1.944,
+          "uncached_input_tokens": 219,
+          "cache_read_tokens": 19200
+        }
+      ]
+    },
+    {
+      "kind": "current_long_context",
+      "requests": [
+        {
+          "output_tokens": 164,
+          "stream_seconds": 0.987,
+          "stream_tps": 166.16,
+          "ttft_seconds": 2.871,
+          "uncached_input_tokens": 613,
+          "cache_read_tokens": 184704
+        },
+        {
+          "output_tokens": 126,
+          "stream_seconds": 0.703,
+          "stream_tps": 179.23,
+          "ttft_seconds": 2.828,
+          "uncached_input_tokens": 152,
+          "cache_read_tokens": 185344
+        },
+        {
+          "output_tokens": 142,
+          "stream_seconds": 0.779,
+          "stream_tps": 182.28,
+          "ttft_seconds": 2.04,
+          "uncached_input_tokens": 164,
+          "cache_read_tokens": 185472
+        },
+        {
+          "output_tokens": 378,
+          "stream_seconds": 3.042,
+          "stream_tps": 124.26,
+          "ttft_seconds": 1.951,
+          "uncached_input_tokens": 201,
+          "cache_read_tokens": 185600
+        },
+        {
+          "output_tokens": 185,
+          "stream_seconds": 1.082,
+          "stream_tps": 170.98,
+          "ttft_seconds": 2.283,
+          "uncached_input_tokens": 261,
+          "cache_read_tokens": 186112
+        },
+        {
+          "output_tokens": 164,
+          "stream_seconds": 0.864,
+          "stream_tps": 189.81,
+          "ttft_seconds": 2.803,
+          "uncached_input_tokens": 204,
+          "cache_read_tokens": 186368
+        },
+        {
+          "output_tokens": 163,
+          "stream_seconds": 0.88,
+          "stream_tps": 185.23,
+          "ttft_seconds": 2.285,
+          "uncached_input_tokens": 257,
+          "cache_read_tokens": 186496
+        },
+        {
+          "output_tokens": 339,
+          "stream_seconds": 2.462,
+          "stream_tps": 137.69,
+          "ttft_seconds": 2.338,
+          "uncached_input_tokens": 190,
+          "cache_read_tokens": 186752
+        },
+        {
+          "output_tokens": 271,
+          "stream_seconds": 1.637,
+          "stream_tps": 165.55,
+          "ttft_seconds": 2.304,
+          "uncached_input_tokens": 156,
+          "cache_read_tokens": 187136
+        },
+        {
+          "output_tokens": 575,
+          "stream_seconds": 1.728,
+          "stream_tps": 332.75,
+          "ttft_seconds": 2.286,
+          "uncached_input_tokens": 177,
+          "cache_read_tokens": 187520
+        },
+        {
+          "output_tokens": 744,
+          "stream_seconds": 33.331,
+          "stream_tps": 22.32,
+          "ttft_seconds": 16.457,
+          "uncached_input_tokens": 459,
+          "cache_read_tokens": 188160
+        },
+        {
+          "output_tokens": 708,
+          "stream_seconds": 5.665,
+          "stream_tps": 124.98,
+          "ttft_seconds": 81.397,
+          "uncached_input_tokens": 379,
+          "cache_read_tokens": 189312
+        },
+        {
+          "output_tokens": 259,
+          "stream_seconds": 1.328,
+          "stream_tps": 195.03,
+          "ttft_seconds": 4.391,
+          "uncached_input_tokens": 160,
+          "cache_read_tokens": 190336
+        },
+        {
+          "output_tokens": 792,
+          "stream_seconds": 2.383,
+          "stream_tps": 332.35,
+          "ttft_seconds": 2.394,
+          "uncached_input_tokens": 194,
+          "cache_read_tokens": 190720
+        },
+        {
+          "output_tokens": 472,
+          "stream_seconds": 1.518,
+          "stream_tps": 310.94,
+          "ttft_seconds": 2.126,
+          "uncached_input_tokens": 400,
+          "cache_read_tokens": 191616
+        },
+        {
+          "output_tokens": 2488,
+          "stream_seconds": 11.013,
+          "stream_tps": 225.91,
+          "ttft_seconds": 2.671,
+          "uncached_input_tokens": 361,
+          "cache_read_tokens": 192384
+        },
+        {
+          "output_tokens": 93,
+          "stream_seconds": 0.28,
+          "stream_tps": 332.14,
+          "ttft_seconds": 2.545,
+          "uncached_input_tokens": 216,
+          "cache_read_tokens": 195072
+        },
+        {
+          "output_tokens": 550,
+          "stream_seconds": 2.795,
+          "stream_tps": 196.78,
+          "ttft_seconds": 2.872,
+          "uncached_input_tokens": 219,
+          "cache_read_tokens": 195200
+        }
+      ],
+      "selection": "Four consecutive complete post-setup turns, 18 output-bearing calls; replaces the earlier 8-call subset without double counting.",
+      "verification": "Reconstructed from original session events; all six calls in the last turn retained, including calls after the earlier report cutoff."
+    }
+  ]
+}

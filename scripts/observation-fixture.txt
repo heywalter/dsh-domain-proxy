@@ -1,0 +1,33 @@
+export const name = 'observation-fixture';
+export const inject = ['llm','webServer'];
+export function apply(ctx) {
+  // Only loaded by the isolated host test. Never shipped in the package.
+  let origin;
+  class Adapter extends LlmAdapter {
+    async *stream(options) {
+      try {
+        await (await fetch(options.model === 'proxy' ? 'http://route.fixture.invalid/' : origin+'/observation-fixture-data')).text();
+        yield {type:'block-start',index:0,blockType:'text'};
+        yield {type:'text-delta',index:0,text:'fixture-only-private'};
+        await new Promise(resolve=>setTimeout(resolve,20));
+        yield {type:'text-delta',index:0,text:'fixture-only-private'};
+        yield {type:'block-end',index:0,block:{type:'text',text:'fixture-only-private'}};
+        yield {type:'usage',usage:{inputTokens:4,outputTokens:8,totalTokens:12}};
+        yield {type:'finish',reason:{kind:'stop'}};
+      } catch {
+        yield {type:'finish',reason:{kind:'error',failure:{code:'TRANSPORT',message:'fixture-only-private'}}};
+      }
+    }
+  }
+  ctx.llm.registerConfigurableProviders([{provider:'observation-fixture',displayName:'Fixture provider',settingsNs:'domain-proxy',settingsPath:[],defaultBaseURL:'https://fixture.example.com/v1'}]);
+  ctx.llm.registerAdapter(['observation-fixture'],new Adapter());
+  ctx.webServer.register({kind:'exact',path:'/observation-fixture-data',handler:async(req,res)=>{res.end('fixture-only-private');}});
+  ctx.webServer.register({kind:'exact',path:'/observation-fixture-run',handler:async(req,res)=>{
+    if(req.headers['x-observation-fixture']!=='1'){res.writeHead(403);res.end();return;}
+    origin='http://'+req.headers.host;
+    await Promise.all(['original','proxy'].map(async model=>{
+      for await(const chunk of ctx.llm.stream({provider:'observation-fixture',model,messages:[]})) {}
+    }));
+    res.end('done');
+  }});
+}
