@@ -58,6 +58,9 @@
     "type": "git",
     "url": "git+https://github.com/heywalter/dsh-domain-proxy.git"
   },
+  "bugs": {
+    "url": "https://github.com/heywalter/dsh-domain-proxy/issues"
+  },
   "homepage": "https://www.npmjs.com/package/dsh-domain-proxy",
   "keywords": [
     "dsh-plugin",

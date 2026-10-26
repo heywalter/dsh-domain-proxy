@@ -1,42 +1,68 @@
-# Contributing
+# Contributing to DSH Domain Proxy
 
-DSH Domain Proxy focuses on explicit API hostname routing and small, local request observations. Keep defaults conservative and describe what is observed versus inferred.
+Thank you for your interest in contributing! DSH Domain Proxy focuses on precise, domain-based API routing and lightweight, local call observability for DeepSeek Harness.
 
-## Develop
+---
 
-Use Node >=22.19 and OpenSSL with -addext support.
+## Development Setup
 
-    npm ci --ignore-scripts
-    npm run check
-    npm test
-    npm run pack:local
+### Requirements
+- **Node.js**: `>=22.19.0`
+- **OpenSSL**: with `-addext` support
 
-The pack command produces the ready-to-install .tgz and its .sha256 file under artifacts/. End users install the package through Desktop; they do not need to run the source-build commands above. Dependencies are resolved by DSH during installation, so the tarball is not a fully offline installer.
+### Getting Started
+```sh
+npm ci --ignore-scripts
+npm run check
+npm test
+npm run pack:local
+```
 
-For a real DSH host test, install the tested Desktop version and run npm run test:dsh. DSH_TEST_EXECUTABLE and DSH_TEST_CLI override the macOS defaults. This test creates a unique isolated DSH_HOME and uses synthetic model adapters; it must never use your daily profile or real model credentials.
+The `pack:local` command generates the installable package tarball (`.tgz`) and its `.sha256` checksum file under `artifacts/`.
 
-scripts/run-dsh-preview.mjs is an optional local development helper. Its isolated profile lives under artifacts/dsh-home; install/link this package into that profile before starting it. It is not a Desktop installer.
+### Host Integration Testing
+To test against an actual DSH Desktop installation:
+```sh
+npm run test:dsh
+```
+> **Note**: This suite creates an isolated `DSH_HOME` and uses synthetic model adapters. It will never touch your personal profile or consume real API credentials. You can override test binaries using `DSH_TEST_EXECUTABLE` and `DSH_TEST_CLI`.
 
-## Changes
+---
 
-- Add meaningful tests for routing, privacy, concurrency or stream lifecycle changes.
-- Preserve exact stream chunks, cancellation, TLS verification and unrelated routes.
-- Unknown usage, paths and retries must remain unknown.
-- Do not add prompt/body/key logging, automatic paid tests or silent node switching.
-- Update both READMEs and CHANGELOG for user-visible behavior.
-- Keep artifacts, local profiles, credentials, personal screenshots and dependencies out of Git.
-- The package and lockfile versions must match. Verify the npm tarball before release.
+## Code and Contribution Guidelines
 
-## Issues and pull requests
+When submitting code changes, please ensure:
+1. **Routing & Dispatch**:
+   - Keep routing defaults conservative (exact domain matching by default).
+   - Preserve untouched network paths for unmatched destinations.
+   - Never disable TLS certificate verification or silently fallback on proxy failure.
+2. **Privacy**:
+   - Never log prompts, response bodies, headers, or API keys.
+   - Keep observations strictly in memory; unknown values (e.g. usage, retries) must remain explicitly unknown.
+3. **Lifecycle & Clean Shutdown**:
+   - Ensure connections are drained gracefully (`drain()`) when configuration changes.
+   - Clean up dispatchers on plugin disposal without closing inherited dispatchers.
+4. **Documentation**:
+   - Update both [README.zh-CN.md](README.zh-CN.md) and [README.md](README.md) for any user-facing changes.
+   - Document any new features or behaviors in [CHANGELOG.md](CHANGELOG.md).
+5. **Git Hygiene**:
+   - Do not commit generated build files, `.DS_Store`, local profiles, or `.tgz` archives.
 
-Use synthetic hostnames and minimal reproductions. Include DSH version, OS, Node version, observed behavior and expected behavior. Do not attach complete profiles, session logs, API keys or internal hostnames.
+---
 
-A useful PR explains the user problem, resulting behavior, validation performed and any remaining coverage limits. Documentation or CI configuration alone does not prove runtime compatibility.
+## Reporting Issues and Pull Requests
 
-Security-sensitive details should not be posted in public issues. See SECURITY.md; a private reporting channel must be configured when the repository is published.
+- **Bug Reports**: Please include your DSH version, OS, Node.js version, observed behavior, and expected behavior.
+- **Sanitized Reproduction**: Use synthetic hostnames (e.g., `api.example.com`) and fixtures. Never include real API credentials, full user profiles, or proprietary session transcripts.
+- **Security Vulnerabilities**: Do **not** open public issues for potential security vulnerabilities. Follow the reporting instructions in [SECURITY.md](SECURITY.md).
 
-## Release checklist
+---
 
-Confirm the repository owner and registry name, run CI and the isolated host test, inspect the tarball contents, and attach its checksum to the release. Re-test runtime changes on the supported Desktop version. Never publish artifacts/ or a zip of the entire development folder; publish Git-tracked source and the audited npm package. Keep compatibility claims limited to tested versions and platforms.
+## Release Process
 
-Repository-dependent steps remain pending until publication: add repository/homepage/bugs URLs to package metadata, enable a private vulnerability-reporting channel and link it from SECURITY.md, provide release assets/checksums, and confirm the first remote CI run. Do not replace these with placeholder URLs or claims that a release already exists.
+For maintainers publishing a new version:
+1. Ensure all checks pass: `npm run check && npm test`.
+2. Sync version numbers across `package.json`, `package-lock.json`, and [CHANGELOG.md](CHANGELOG.md).
+3. Validate the distribution bundle with `npm run pack:check`.
+4. Publish to npm (`npm publish`) using the `latest` tag.
+5. Create a GitHub Release corresponding to the published version tag with release notes and checksums.
