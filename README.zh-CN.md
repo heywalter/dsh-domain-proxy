@@ -38,7 +38,7 @@
 
 ## 快速上手
 
-目前已在 macOS Desktop / DSH `0.2.1-rc.3` 环境完成实机验证。
+兼容 DSH `0.2.1-rc.3` 和 `0.2.1-rc.5`。`rc.3` 已完成 macOS Desktop 界面及真实模型调用验证；`rc.5` 已通过隔离宿主的安装、配置、分流与观测、重启和卸载验证。
 
 ### 1. 打开插件管理器
 确保已安装 [DeepSeek Harness Desktop](https://github.com/deepseek-ai/deepseek-harness) 且本地代理软件处于运行状态。在客户端中进入：
@@ -123,3 +123,5 @@
 [完整使用指南](docs/USAGE.zh-CN.md) · [架构设计](docs/DESIGN.md) · [验证规范](docs/VALIDATION.md) · [贡献指南](CONTRIBUTING.md) · [安全说明](SECURITY.md) · [更新日志](CHANGELOG.md)
 
 本项目基于 MIT 协议开源，属于社区独立工具，与 DeepSeek 官方无隶属关系。
+
+兼容策略：DSH 预发布版本通过宿主验证后加入允许列表；不会自动放行未来 RC。

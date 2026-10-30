@@ -38,7 +38,7 @@ The plugin intercepts model API requests at the DSH network layer and routes the
 
 ## Quick Start
 
-Verified on macOS Desktop with DSH `0.2.1-rc.3`.
+DSH compatibility: `0.2.1-rc.3` and `0.2.1-rc.5`. Desktop UI and a real model call were verified on macOS with `rc.3`; `rc.5` passed isolated host installation, settings, routing/observation, restart and uninstall tests.
 
 ### 1. Open the Plugin Manager
 Ensure [DeepSeek Harness Desktop](https://github.com/deepseek-ai/deepseek-harness) is installed and your local proxy client is running. In Desktop, navigate to:
@@ -123,3 +123,5 @@ Local benchmark comparison on identical models and multi-turn workloads (histori
 [User Guide](docs/USAGE.en.md) · [Architecture Design](docs/DESIGN.md) · [Validation](docs/VALIDATION.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
 
 Released under the MIT License. This is an independent community project and is not affiliated with DeepSeek.
+
+Compatibility policy: pre-release DSH versions are explicitly allowed after host verification. A newer RC is not automatically considered compatible.

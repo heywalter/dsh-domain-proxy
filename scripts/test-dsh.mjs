@@ -11,7 +11,9 @@ const exe=process.env.DSH_TEST_EXECUTABLE??'/Applications/DeepSeek Harness.app/C
 const cli=process.env.DSH_TEST_CLI??'/Applications/DeepSeek Harness.app/Contents/Resources/app.asar/dsh/node_modules/@deepseek-ai/dsh/lib/bin.js';
 const base=Object.fromEntries(Object.entries(process.env).filter(([k])=>!/(PROXY|TOKEN|SECRET|PASSWORD|API_KEY)/i.test(k)));
 const env={...base,DSH_HOME:home,ELECTRON_RUN_AS_NODE:'1',DSH_TELEMETRY_DISABLED:'1',DSH_TELEMETRY_MODE:'DISABLED'};
-const evidence={runtime:'DSH 0.2.1-rc.3',at:new Date().toISOString(),checks:[]};
+const hostVersion=spawnSync(exe,['-p',`JSON.parse(require('node:fs').readFileSync(${JSON.stringify(resolve(dirname(cli),'../package.json'))},'utf8')).version`],{env,encoding:'utf8'});
+assert.equal(hostVersion.status,0,'Unable to read tested DSH version');
+const evidence={runtime:'DSH '+hostVersion.stdout.trim(),at:new Date().toISOString(),checks:[]};
 function command(args,install=false){
  const result=spawnSync(exe,[cli,...args],{env:install?{...env,...(process.env.HTTPS_PROXY?{HTTPS_PROXY:process.env.HTTPS_PROXY}:{})}:env,encoding:'utf8',timeout:120000});
  assert.equal(result.status,0,'DSH command failed: '+args.slice(0,3).join(' ')+' '+(result.stderr??'').replace(/https?:\/\/\S+/g,'[URL omitted]').slice(-600));

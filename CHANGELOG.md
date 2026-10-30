@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 — 2026-10-30
+
+- Add DSH 0.2.1-rc.5 to the explicit compatibility list after isolated host verification; retain 0.2.1-rc.3.
+- Report the actual tested host version in integration evidence instead of a hard-coded version.
+- Routing and observation runtime code is unchanged from 0.1.1.
+
 ## 0.1.1 — 2026-10-26
 
 - Fix npm README images with version-pinned public npm CDN URLs, independent of GitHub repository visibility.

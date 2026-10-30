@@ -1,6 +1,6 @@
 {
   "name": "dsh-domain-proxy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Route selected DSH API domains through a local HTTP proxy; keep other routes unchanged.",
   "type": "module",
   "main": "src/index.js",
@@ -28,7 +28,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=22.19.0",
-    "dsh": "0.2.1-rc.3"
+    "dsh": "0.2.1-rc.3 || 0.2.1-rc.5"
   },
   "dsh": {
     "bundle": {
